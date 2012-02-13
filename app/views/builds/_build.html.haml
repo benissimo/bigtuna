@@ -1,11 +1,11 @@
 .build-details
-  - if build.output[0]
+  - if build && build.output[0]
     %h3{ :class => build.output[0].exit_code == 0 ? "status_build_ok" : "status_build_failed"}
       VCS
     %ul.unstyled
       %li
         = render :partial => "builds/step", :locals => {:step => build.output[0], :step_no => 0}
-  - build.parts.each_with_index do |part, index|
+  - @build.parts.each_with_index do |part, index|
     %h3{ :class => part.output[0].exit_code == 0 ? "status_build_ok" : "status_build_failed"}
       = part.name
     %ul{:id => "part_#{index}", :class => 'unstyled' }
@@ -16,3 +16,5 @@
         %li{ :class => Build::STATUS_PROGRESS }
           %div.pulse
           %span.label.warning Building
+  %a{ :href => "/builds/#{build.id}/report", :target => '_new'}
+    Rspec report (viewable even while build is in progress)

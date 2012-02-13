@@ -1,1 +1,3 @@
-$("#build").html("<%= escape_javascript(render(:partial => 'build')) %>");
+<% if @build && @build.output[0] %>
+  $("#build-details-wrapper").html("<%= escape_javascript(render(:partial => 'build', :locals => { :build => @build })) %>");
+<% end %>

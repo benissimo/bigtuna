@@ -4,7 +4,9 @@ BigTuna::Application.routes.draw do
     resources :projects, :only => [:index, :show] do
       member { get "feed" }
     end
-    resources :builds, :only => [:show]
+    resources :builds, :only => [:show, :report] do
+      member { get :report }
+    end
 
   else
 
@@ -12,7 +14,9 @@ BigTuna::Application.routes.draw do
       member { get "build"; get "remove"; get "arrange"; get "feed"; get "duplicate" }
       match "/hooks/:name/configure", :to => "hooks#configure", :as => "config_hook"
     end
-    resources :builds
+    resources :builds do
+      member { get :report }
+    end
     resources :step_lists
     resources :shared_variables
 

@@ -1,5 +1,5 @@
 class BuildsController < ApplicationController
-  before_filter :locate_build, :only => [:show, :destroy]
+  before_filter :locate_build, :only => [:show, :destroy, :report]
   respond_to :js, :only => :show
 
   def show
@@ -10,6 +10,10 @@ class BuildsController < ApplicationController
     project = @build.project
     @build.destroy
     redirect_to project_path(project)
+  end
+
+  def report
+    send_file "#{@build.build_dir}/marketing/spec/reports/spec_report.html", :disposition =>'inline', :type => "text/html"
   end
 
   private

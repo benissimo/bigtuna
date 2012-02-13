@@ -24,8 +24,8 @@
 #build.row
   .span8
     #ajax-reload= @build.ajax_reload?
-
-    = render :partial => 'build', :locals => { :build => @build }
+    #build-details-wrapper
+      = render :partial => 'build', :locals => { :build => @build }
 
     - unless @build.finished?
       - build_path_params = params[:stderr] ? {:format => :js, :stderr => 1} : {:format => :js}
