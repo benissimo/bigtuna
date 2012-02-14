@@ -44,12 +44,8 @@ module BigTuna
       end
 
       def full_msg(build, status)
-        "Build '#{build.display_name}' in '#{build.project.name}' #{status}#{build_url(build)}"
+        "Build '#{build.display_name}' in '#{build.project.name}' #{status} (#{build_url(build)})"
       end
 
-      def build_url build
-        return "" unless BigTuna.config[:url_host]
-        " http://#{BigTuna.config[:url_host]}:3000/builds/#{build.id}"
-      end
   end
 end
