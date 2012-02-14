@@ -16,5 +16,6 @@
         %li{ :class => Build::STATUS_PROGRESS }
           %div.pulse
           %span.label.warning Building
-  %a{ :href => "/builds/#{build.id}/report", :target => '_new'}
-    Rspec report (viewable even while build is in progress)
+  - if @show_report_link
+    %a{ :href => "/builds/#{build.id}/report", :target => '_new'}
+      Rspec report (viewable even while build is in progress)
