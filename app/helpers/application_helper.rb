@@ -73,4 +73,8 @@ module ApplicationHelper
     end
   end
 
+  def exit_code_ok?(build_or_part)
+    build_or_part.output[0] && build_or_part.output[0].exit_code == 0
+  end
+
 end
