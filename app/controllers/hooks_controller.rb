@@ -10,6 +10,18 @@ class HooksController < ApplicationController
     end
   end
 
+  def ref_name
+    ref_name = params[:ref_name].split('/').last
+    projects = Project.where(["vcs_source LIKE ?", "%#{params[:repo]}.git"]).where(:vcs_branch => ref_name).all
+    if projects.present?
+      projects.each(&:build!)
+      render :text => "build for the following projects were triggered: " +
+        projects.map(&:name).map(&:inspect).join(', '), :status => 200
+    else
+      render :text => "project not found", :status => 404
+    end
+  end
+
   def github
     payload = JSON.parse(params[:payload])
     branch = payload["ref"].split("/").last
