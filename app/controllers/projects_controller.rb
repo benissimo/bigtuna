@@ -5,6 +5,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.order("position ASC")
+    @hide_stability_column = true
   end
 
   def show

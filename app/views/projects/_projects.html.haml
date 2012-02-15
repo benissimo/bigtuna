@@ -40,6 +40,7 @@
               %td Message
               %td
                 %pre.unobstrusive= build.commit_data? ? build.commit_message : "Message not yet available"
-            %tr
-              %td Stability
-              %td= format_stability(project.stability)
+            - unless @hide_stability_column
+              %tr
+                %td Stability
+                %td= format_stability(project.stability)
