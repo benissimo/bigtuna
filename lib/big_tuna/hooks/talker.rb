@@ -3,15 +3,15 @@ module BigTuna
     NAME = "talker"
 
     def build_fixed(build, config)
-      enqueue(config, full_msg(build, 'fixed'))
+      enqueue(config, full_msg(build, 'green:fixed'))
     end
 
     def build_still_fails(build, config)
-      enqueue(config, full_msg(build, 'still fails'))
+      enqueue(config, full_msg(build, 'red:still red:fails'))
     end
 
     def build_failed(build, config)
-      enqueue(config, full_msg(build, 'failed'))
+      enqueue(config, full_msg(build, 'red:failed'))
     end
 
     class Job 
