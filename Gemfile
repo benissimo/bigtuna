@@ -22,7 +22,7 @@ gem "notifo"
 # campfire notifications
 gem "tinder"
 
-gem "mysql", "~>0.2.0"
+gem "mysql2", "~>0.2.0"
 
 group :development, :test do
   gem "capybara"
