@@ -487,7 +487,7 @@ pre {
   border-radius: 4px;
   white-space: pre;
   white-space: pre-wrap;
-  word-break: break-all;
+/*  word-break: break-all; */
 }
 pre.prettyprint {
   margin-bottom: 18px;
